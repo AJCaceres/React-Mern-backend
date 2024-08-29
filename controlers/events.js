@@ -28,7 +28,7 @@ const createEvent = async(req, res = response)=>{
         console.log(error);
         res.status(500).json({
             ok:false,
-            msg:"Por favor hable con el administrador"
+            msg:"Por favor hable con el administrador " +error
         })
     }
 }
@@ -56,6 +56,7 @@ const updateEvent = async(req, res = response)=>{
             ...req.body,
             user:uid
         }
+        console.log("es un evento que ya existe", eventId, newEvent);
         const eventUpdated = await Event.findByIdAndUpdate(eventId, newEvent,{new:true});
         res.json({
             ok:true,
@@ -68,10 +69,6 @@ const updateEvent = async(req, res = response)=>{
             msg:"Hable con el administrador"
         })
     }
-    res.json({
-        ok:true,
-        msg:'editar evento updateEvent'
-    })
 }
 
 

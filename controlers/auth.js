@@ -11,9 +11,8 @@ const createUser = async(req, res = response)=>{
     // const user = new User(req.body);
     try {
         
-        let user =  await User.findOne({email:email});
-        console.log(user)
-
+        let user =  await User.findOne({email});
+        
         if(user){
             return res.status(400).json({
                 ok:false,
@@ -72,7 +71,9 @@ const userLogin = async(req, res)=>{
             })
         }
         // Generar JWT
+        console.log("creo el jwt");
         const token = await generateJWT(user.id, user.name)
+        console.log(token);
 
         res.json({
             ok:true,

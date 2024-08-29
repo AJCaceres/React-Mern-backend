@@ -4,15 +4,18 @@ const EventSchema = Schema({
 
     title:{
         type:String,
-        required: true
+        required: true,
+        unique:false,
     },
     start:{
         type:Date,
         required: true,
+        unique:false,
     },
     end:{
         type:Date,
         required: true,
+        unique:false,
     },
     notes:{
         type:String,
@@ -20,7 +23,8 @@ const EventSchema = Schema({
     user:{
         type:Schema.Types.ObjectId,
         ref:'User',
-        required:true
+        required:true,
+        unique:false,
     }
 });
 
